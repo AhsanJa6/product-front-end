@@ -1,0 +1,43 @@
+<div class="inner-content">
+    <div nz-row>
+        <div nz-col nzSpan="6">
+            <h2>Products</h2>
+        </div>
+        <div nz-col nzSpan="18" class="text-right">
+           
+            <button class="float-right" nz-button nzType="primary" (click)="addProduct()"><i nz-icon nzType="plus"
+                    nzTheme="outline"></i>
+                Product</button>
+        </div>
+    </div>
+    <nz-table [nzLoading]="loading" nzSize="small" [nzData]="displayedProduct" #tblDepartments
+        [nzFrontPagination]="false" [nzShowSizeChanger]="false">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th style="width: 120px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of tblDepartments.data">
+                <td>{{data.name}}</td>
+                <td>{{data.description}}</td>
+                <td>{{data.price }}</td>
+                <td>
+                    <a nz-button nzType="text" (click)="updateProduct(data)">
+                        <i nz-icon nzType="edit"></i>
+                    </a>
+                    |
+                    <a nz-button nzType="text" nz-popconfirm
+                        nzPopconfirmTitle="Are you sure to delete? this action can't be undone"
+                        (nzOnConfirm)="confirm(data.id)">
+                        <i nz-icon nzType="delete"></i>
+                    </a>
+                </td>
+
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

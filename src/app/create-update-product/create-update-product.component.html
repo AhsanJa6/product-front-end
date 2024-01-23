@@ -1,0 +1,43 @@
+<form nz-form [formGroup]="productForm">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6">Name</nz-form-label>
+        <nz-form-control [nzSm]="18">
+            <input nz-input formControlName="name" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6">description</nz-form-label>
+        <nz-form-control [nzSm]="18">
+            <input nz-input formControlName="description" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6">price</nz-form-label>
+        <nz-form-control [nzSm]="18">
+            <input nz-input formControlName="price" />
+        </nz-form-control>
+    </nz-form-item>
+
+
+</form>
+
+<div class="dwr-footer" style="text-align:unset">
+    <div nz-row>
+        <div nz-col [nzSpan]="5">
+            <button nz-button nzType="default" class="mr-1" nz-popconfirm
+                nzPopconfirmTitle="Do you want to leave without saving changes?"
+                [nzCondition]="!this.productForm.dirty" (nzOnConfirm)="close()"><i nz-icon nzType="close"></i>
+                Close</button>
+        </div>
+        <div nz-col nzSpan="14" class="text-center">
+
+        </div>
+        <div nz-col nzSpan="5" class="text-right">
+            <button [disabled]="productForm.invalid || !productForm.dirty || loading" [nzLoading]="loading"
+                nz-button nzType="primary" class="mr-1" (click)="saveData()"><i nz-icon nzType="save"></i> Save</button>
+        </div>
+
+    </div>
+</div>
